@@ -29,9 +29,21 @@ describe("Calculator", () => {
         test("should raise an error if one of the inputs is not a number", () => {
             expect(() => addition("0", -104)).toThrowError("Both arguments must be numbers");
         });
-        // test("should raise an error if one parameter is missing", () => {
-        //     expect(() => addition(a, 89)).toThrowError("Both arguments must be numbers");
-        // });
+        test("should raise an error if one parameter is null", () => {
+            expect(() => addition('null', 89)).toThrowError("Both arguments must be numbers");
+        });
+        test("should raise an error if both parameters are null", () => {
+            expect(() => addition('null', 'null')).toThrowError("Both arguments must be numbers");
+        });
+        test("should add floating point numbers and return the result", () => {
+            expect(addition(0.2, 4.75)).toBeCloseTo(4.95);
+        });
+        test("should raise an error if one parameter is undefined", () => {
+            expect(() => addition('undefined', 89)).toThrowError("Both arguments must be numbers");
+        });
+        test("should raise an error if both parameters are undefined", () => {
+            expect(() => addition('undefined', 'undefined')).toThrowError("Both arguments must be numbers");
+        });
     });
     describe("Subtraction function", () => {
         
@@ -47,8 +59,7 @@ describe("Calculator", () => {
 // Potential Test Ideas
 // test for no parameters
 // test for missing paramenter
-// null as one or both parameters
 // undefined as a parameter
-// does it work with floating point numbers?
+
 
 // https://www.jstwister.com/post/unit-testing-beginners-guide-testing-functions/
